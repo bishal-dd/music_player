@@ -6,6 +6,5 @@ urlpatterns = [
     path('create', index),
     path('join', index),
     path('room', index),
-
   
 ]
