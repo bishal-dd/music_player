@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -11,6 +11,17 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 export default function Home() {
+  const [play, Setplay] = useState(true);
+  const [votes_to_skip, Set_votes_to_skip] = useState(2);
+
+  const playValue = (e) => {
+    Setplay(e.target.value);
+  };
+
+  const handelRoomButtonPressed = (e) => {
+    console.log(str(play));
+  };
+
   return (
     <>
       <Grid container spacing={1}>
@@ -24,7 +35,7 @@ export default function Home() {
             <FormHelperText>
               <div align="center">Guest Control of Playback State</div>
             </FormHelperText>
-            <RadioGroup row defaultValue="true">
+            <RadioGroup row defaultValue="true" onChange={playValue}>
               <FormControlLabel
                 value="true"
                 control={<Radio color="primary" />}
@@ -56,12 +67,21 @@ export default function Home() {
           </FormControl>
         </Grid>
         <Grid item xs={12} align="center">
-          <Button color="primary" variant="contained">
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={handelRoomButtonPressed}
+          >
             Create A Room
           </Button>
         </Grid>
         <Grid item xs={12} align="center">
-          <Button color="secondary" variant="contained">
+          <Button
+            color="secondary"
+            variant="contained"
+            to="room"
+            component={Link}
+          >
             Back
           </Button>
         </Grid>
